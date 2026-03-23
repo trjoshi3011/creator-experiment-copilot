@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { SetupSubmission as SetupSubmissionSchema } from "@/lib/schemas";
-import { defaultCreatorProfile } from "@/lib/defaults";
 import { saveCreatorExperimentInput } from "@/lib/utils";
 
 function splitCsv(value: string): string[] {
@@ -24,20 +23,12 @@ export default function SetupForm() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
 
-  const [niche, setNiche] = useState(defaultCreatorProfile.niche);
-  const [audienceDemographic, setAudienceDemographic] = useState(
-    defaultCreatorProfile.audienceDemographic,
-  );
-  const [audienceInterests, setAudienceInterests] = useState(
-    defaultCreatorProfile.audienceInterests.join(", "),
-  );
-  const [contentPillars, setContentPillars] = useState(
-    defaultCreatorProfile.contentPillars.join(", "),
-  );
-  const [recentTopics, setRecentTopics] = useState(
-    defaultCreatorProfile.recentTopics.join(", "),
-  );
-  const [tone, setTone] = useState(defaultCreatorProfile.tone);
+  const [niche, setNiche] = useState("");
+  const [audienceDemographic, setAudienceDemographic] = useState("");
+  const [audienceInterests, setAudienceInterests] = useState("");
+  const [contentPillars, setContentPillars] = useState("");
+  const [recentTopics, setRecentTopics] = useState("");
+  const [tone, setTone] = useState("");
 
   const [postTopic, setPostTopic] = useState("");
   const [postCaption, setPostCaption] = useState("");
@@ -93,6 +84,7 @@ export default function SetupForm() {
               type="text"
               value={niche}
               onChange={(e) => setNiche(e.target.value)}
+              placeholder="e.g. productivity, studying, and career growth"
               className={`mt-1.5 ${inputClass}`}
             />
           </div>
@@ -106,6 +98,7 @@ export default function SetupForm() {
               type="text"
               value={audienceDemographic}
               onChange={(e) => setAudienceDemographic(e.target.value)}
+              placeholder="e.g. college students and early-career professionals (18–28)"
               className={`mt-1.5 ${inputClass}`}
             />
           </div>
@@ -122,6 +115,7 @@ export default function SetupForm() {
               rows={2}
               value={audienceInterests}
               onChange={(e) => setAudienceInterests(e.target.value)}
+              placeholder="e.g. study techniques, time management, interview prep, building habits"
               className={`mt-1.5 ${inputClass}`}
             />
           </div>
@@ -138,6 +132,7 @@ export default function SetupForm() {
               rows={2}
               value={contentPillars}
               onChange={(e) => setContentPillars(e.target.value)}
+              placeholder="e.g. study methods that work, productivity systems, career advice"
               className={`mt-1.5 ${inputClass}`}
             />
           </div>
@@ -154,6 +149,7 @@ export default function SetupForm() {
               rows={2}
               value={recentTopics}
               onChange={(e) => setRecentTopics(e.target.value)}
+              placeholder="e.g. Pomodoro vs. time-blocking, resume mistakes I see every week"
               className={`mt-1.5 ${inputClass}`}
             />
           </div>
@@ -167,6 +163,7 @@ export default function SetupForm() {
               type="text"
               value={tone}
               onChange={(e) => setTone(e.target.value)}
+              placeholder="e.g. practical, supportive, and clear"
               className={`mt-1.5 ${inputClass}`}
             />
           </div>
