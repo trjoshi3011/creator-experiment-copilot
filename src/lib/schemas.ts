@@ -66,8 +66,3 @@ export const SetupSubmission = z.object({
   creatorProfile: CreatorProfile,
   commentInput: CommentInput,
 });
-
-export const ExperimentGenerationRequest = z.object({
-  creatorProfile: CreatorProfile,
-  themes: z.array(ThemeCluster),
-});
